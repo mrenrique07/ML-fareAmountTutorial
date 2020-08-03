@@ -53,61 +53,52 @@ namespace TaxiFarePrediction
         private static void TestSinglePrediction(MLContext mlContext, ITransformer model)
         {
             var predictionFunction = mlContext.Model.CreatePredictionEngine<TaxiTrip, TaxiTripFarePrediction>(model);
-            
-            //var taxiTripSample = new TaxiTrip();
 
-            //Console.WriteLine( "Insert ID: ");
-            //taxiTripSample.VendorId = Console.ReadLine();
+            var taxiTripSample = new TaxiTrip();
 
-            //Console.WriteLine("insert rate code:");
-            //taxiTripSample.RateCode = Console.ReadLine();
+            Console.WriteLine("Insert ID: ");
+            taxiTripSample.VendorId = Console.ReadLine();
 
-            //Console.WriteLine("Insert Passeger Count: ");
-            //taxiTripSample.PassengerCount = float.Parse(Console.ReadLine());
+            Console.WriteLine("insert rate code:");
+            taxiTripSample.RateCode = Console.ReadLine();
 
-            //Console.WriteLine("Insert Trip Time: ");
-            //taxiTripSample.TripTime = float.Parse(Console.ReadLine());
+            Console.WriteLine("Insert Passeger Count: ");
+            taxiTripSample.PassengerCount = float.Parse(Console.ReadLine());
 
-            //Console.WriteLine("Insert Trip Distance: ");
-            //taxiTripSample.TripDistance = float.Parse(Console.ReadLine());
+            Console.WriteLine("Insert Trip Time: ");
+            taxiTripSample.TripTime = float.Parse(Console.ReadLine());
 
-            //Console.WriteLine("Insert Payment type, 1 cash, 2 card: ");
-            //int Evaluar = Convert.ToInt32 (Console.ReadLine());
-            //#region Evalua e inserta
-            //int i = 1;
+            Console.WriteLine("Insert Trip Distance: ");
+            taxiTripSample.TripDistance = float.Parse(Console.ReadLine());
 
-            //do{
-            //    if (Evaluar > 0 && Evaluar < 2)
-            //    {
-            //        taxiTripSample.PaymentType = "CSH";
+            Console.WriteLine("Insert Payment type, 1 cash, 2 card: ");
+            int Evaluar = Convert.ToInt32(Console.ReadLine());
+            #region Evalua e inserta
+            int i = 1;
 
-            //    }
-            //    else if (Evaluar > 1 && Evaluar < 3)
-            //    {
-            //        taxiTripSample.PaymentType = "CRD";
-
-            //    }
-            //    else
-            //    {
-            //        Console.WriteLine("Please input a valid option");
-            //        i = 0;
-            //    }
-            //} while (i == 0);
-            //#endregion
-
-            //Console.WriteLine("Enter fare amount: ");
-            //taxiTripSample.FareAmount = float.Parse( Console.ReadLine());
-
-            var taxiTripSample = new TaxiTrip()
+            do
             {
-                VendorId = "VTS",
-                RateCode = "1",
-                PassengerCount = 1,
-                TripTime = 1140,
-                TripDistance = 3.75f,
-                PaymentType = "CRD",
-                FareAmount = 0 // To predict. Actual/Observed = 15.5
-            };
+                if (Evaluar > 0 && Evaluar < 2)
+                {
+                    taxiTripSample.PaymentType = "CSH";
+
+                }
+                else if (Evaluar > 1 && Evaluar < 3)
+                {
+                    taxiTripSample.PaymentType = "CRD";
+
+                }
+                else
+                {
+                    Console.WriteLine("Please input a valid option");
+                    i = 0;
+                }
+            } while (i == 0);
+            #endregion
+
+            Console.WriteLine("Enter fare amount: ");
+            taxiTripSample.FareAmount = float.Parse(Console.ReadLine());
+
 
             var prediction = predictionFunction.Predict(taxiTripSample);
 
