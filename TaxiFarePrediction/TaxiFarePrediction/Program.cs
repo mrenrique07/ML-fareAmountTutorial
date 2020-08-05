@@ -98,7 +98,7 @@ namespace TaxiFarePrediction
 
             //Console.WriteLine("Enter fare amount: ");
             //taxiTripSample.FareAmount = float.Parse(Console.ReadLine());
-            Console.ReadLine();
+           
 
             var prediction = predictionFunction.Predict(taxiTripSample);
 
