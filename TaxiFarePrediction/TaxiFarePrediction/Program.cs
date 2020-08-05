@@ -30,7 +30,7 @@ namespace TaxiFarePrediction
                 //Choose a learning algorithm
                 .Append(mlContext.Regression.Trainers.FastTree());
 
-            //Train the model
+            //Create the model
             var model = pipeline.Fit(dataView);
 
             return model;
@@ -96,15 +96,16 @@ namespace TaxiFarePrediction
             } while (i == 0);
             #endregion
 
-            Console.WriteLine("Enter fare amount: ");
-            taxiTripSample.FareAmount = float.Parse(Console.ReadLine());
-
+            //Console.WriteLine("Enter fare amount: ");
+            //taxiTripSample.FareAmount = float.Parse(Console.ReadLine());
+            Console.ReadLine();
 
             var prediction = predictionFunction.Predict(taxiTripSample);
 
             Console.WriteLine($"**********************************************************************");
             Console.WriteLine($"Predicted fare: {prediction.FareAmount:0.####}, actual fare: 15.5");
             Console.WriteLine($"**********************************************************************");
+            
         }
     }
 }
